@@ -1,6 +1,7 @@
 <% cache @product do %>
   <h1><%= @product.name %></h1>
   <%= @product.description %>
+  <%= render "inventory", product: @product %>
   <%= image_tag @product.featured_image if @product.featured_image.attached? %>
 <% end %>
 

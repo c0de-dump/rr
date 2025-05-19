@@ -2370,3 +2370,92 @@ Processing by ProductsController#index as HTML
 Completed 200 OK in 35ms (Views: 2.5ms | ActiveRecord: 0.1ms (2 queries, 0 cached) | GC: 0.3ms)
 
 
+  [1m[36mCACHE ActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Store'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Store'*/[0m
+Migrating to AddInventoryCountToProducts (20250519151849)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='Store'*/[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "products" ADD "inventory_count" integer /*application='Store'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250519151849') RETURNING "version" /*application='Store'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='Store'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Store'*/[0m
+  [1m[36mCACHE ActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Store'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Store'*/[0m
+Migrating to CreateSubscribers (20250519152012)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='Store'*/[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "subscribers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "product_id" integer NOT NULL, "email" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_17ccf21a20"
+FOREIGN KEY ("product_id")
+  REFERENCES "products" ("id")
+) /*application='Store'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_subscribers_on_product_id" ON "subscribers" ("product_id") /*application='Store'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250519152012') RETURNING "version" /*application='Store'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='Store'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Store'*/[0m
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."id" ASC LIMIT 1 /*application='Store'*/[0m
+  [1m[36mSubscriber Load (0.3ms)[0m  [1m[34mSELECT "subscribers".* FROM "subscribers" WHERE "subscribers"."product_id" = 1 AND "subscribers"."email" = 'subscriber@example.org' LIMIT 1 /*application='Store'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='Store'*/[0m
+  [1m[36mSubscriber Create (0.3ms)[0m  [1m[32mINSERT INTO "subscribers" ("product_id", "email", "created_at", "updated_at") VALUES (1, 'subscriber@example.org', '2025-05-19 15:27:32.812354', '2025-05-19 15:27:32.812354') RETURNING "id" /*application='Store'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='Store'*/[0m
+[ActiveJob] Enqueued ActionMailer::MailDeliveryJob (Job ID: e51e3480-bdaf-43a4-a041-ee7f05517076) to Async(default) with arguments: "ProductMailer", "in_stock", "deliver_now", {:params=>{:product=>#<GlobalID:0x000000010a0c7e10 @uri=#<URI::GID gid://store/Product/1>>, :subscriber=>#<GlobalID:0x000000010a0c7898 @uri=#<URI::GID gid://store/Subscriber/1>>}, :args=>[]}
+[ActiveJob] ↳ (store):3:in `<main>'
+[ActiveJob] [ActionMailer::MailDeliveryJob] [e51e3480-bdaf-43a4-a041-ee7f05517076]   [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = 1 LIMIT 1 /*application='Store'*/[0m
+[ActiveJob] [ActionMailer::MailDeliveryJob] [e51e3480-bdaf-43a4-a041-ee7f05517076]   [1m[36mSubscriber Load (0.1ms)[0m  [1m[34mSELECT "subscribers".* FROM "subscribers" WHERE "subscribers"."id" = 1 LIMIT 1 /*application='Store'*/[0m
+[ActiveJob] [ActionMailer::MailDeliveryJob] [e51e3480-bdaf-43a4-a041-ee7f05517076] Performing ActionMailer::MailDeliveryJob (Job ID: e51e3480-bdaf-43a4-a041-ee7f05517076) from Async(default) enqueued at 2025-05-19T15:27:39.979689000Z with arguments: "ProductMailer", "in_stock", "deliver_now", {:params=>{:product=>#<GlobalID:0x000000010a1cdaf8 @uri=#<URI::GID gid://store/Product/1>>, :subscriber=>#<GlobalID:0x000000010a1cd580 @uri=#<URI::GID gid://store/Subscriber/1>>}, :args=>[]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [e51e3480-bdaf-43a4-a041-ee7f05517076]   Rendering layout layouts/mailer.html.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [e51e3480-bdaf-43a4-a041-ee7f05517076]   Rendering product_mailer/in_stock.html.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [e51e3480-bdaf-43a4-a041-ee7f05517076]   Rendered product_mailer/in_stock.html.erb within layouts/mailer (Duration: 0.4ms | GC: 0.0ms)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [e51e3480-bdaf-43a4-a041-ee7f05517076]   Rendered layout layouts/mailer.html.erb (Duration: 0.6ms | GC: 0.0ms)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [e51e3480-bdaf-43a4-a041-ee7f05517076]   Rendering layout layouts/mailer.text.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [e51e3480-bdaf-43a4-a041-ee7f05517076]   Rendering product_mailer/in_stock.text.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [e51e3480-bdaf-43a4-a041-ee7f05517076]   Rendered product_mailer/in_stock.text.erb within layouts/mailer (Duration: 0.1ms | GC: 0.0ms)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [e51e3480-bdaf-43a4-a041-ee7f05517076]   Rendered layout layouts/mailer.text.erb (Duration: 0.2ms | GC: 0.0ms)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [e51e3480-bdaf-43a4-a041-ee7f05517076] ProductMailer#in_stock: processed outbound mail in 27.0ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [e51e3480-bdaf-43a4-a041-ee7f05517076] Delivered mail 682b4dec7a8f_fbf89bf0-38@MAir.local.mail (23.4ms)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [e51e3480-bdaf-43a4-a041-ee7f05517076] Date: Mon, 19 May 2025 08:27:40 -0700
+From: from@example.com
+To: subscriber@example.org
+Message-ID: <682b4dec7a8f_fbf89bf0-38@MAir.local.mail>
+Subject: In stock
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_682b4dec6e3c_fbf89bf0-42d";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_682b4dec6e3c_fbf89bf0-42d
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Product#in_stock
+
+, find me in app/views/product_mailer/in_stock.text.erb
+
+
+----==_mimepart_682b4dec6e3c_fbf89bf0-42d
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!-- BEGIN app/views/layouts/mailer.html.erb --><!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <!-- BEGIN app/views/product_mailer/in_stock.html.erb --><h1>Good news!</h1>
+
+<p><a href="http://localhost:3000/products/1">Shoes</a> is back in stock.</p>
+<!-- END app/views/product_mailer/in_stock.html.erb -->
+  </body>
+</html>
+<!-- END app/views/layouts/mailer.html.erb -->
+----==_mimepart_682b4dec6e3c_fbf89bf0-42d--
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [e51e3480-bdaf-43a4-a041-ee7f05517076] Performed ActionMailer::MailDeliveryJob (Job ID: e51e3480-bdaf-43a4-a041-ee7f05517076) from Async(default) in 57.05ms
