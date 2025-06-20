@@ -46,12 +46,12 @@ docker compose ps
 echo -e "${GREEN}🌐 Access points:${NC}"
 echo -e "  • Web Application: http://localhost:3000"
 echo -e "  • Health Check: http://localhost:3000/health"
-echo -e "  • Create Job: POST http://localhost:3000/jobs"
-echo -e "  • List Jobs: GET http://localhost:3000/jobs"
+echo -e "  • Create Job: POST http://localhost:3000/api/v1/jobs"
+echo -e "  • List Jobs: GET http://localhost:3000/api/v1/jobs"
 echo -e "  • Zipkin UI: http://localhost:9411"
 
 echo -e "${YELLOW}📝 Example job creation:${NC}"
-echo -e "curl -X POST http://localhost:3000/jobs \\"
+echo -e "curl -X POST http://localhost:3000/api/v1/jobs \\"
 echo -e "  -H 'Content-Type: application/json' \\"
 echo -e "  -d '{\"message\":\"Hello from API!\", \"delay\":5}'"
 

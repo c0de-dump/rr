@@ -3,7 +3,7 @@ class ExampleJob < ApplicationJob
 
   def perform(message, delay_seconds = 0)
     # Simulate some work
-    sleep(delay_seconds) if delay_seconds > 0
+    sleep(delay_seconds) if delay_seconds.positive?
 
     Rails.logger.info "Processing ExampleJob with message: #{message}"
     Rails.logger.info "Job performed at: #{Time.current}"

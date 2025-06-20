@@ -1,4 +1,4 @@
-class HealthController < ActionController::Base
+class HealthController < ApplicationController
   # Health check controller
 
   def show

@@ -1,7 +1,6 @@
-class JobsController < ApplicationController
-  # Skip CSRF verification for API endpoints
-  skip_before_action :verify_authenticity_token
+# frozen_string_literal: true
 
+class Api::V1::JobsController < Api::V1::BaseController
   def create
     job_type = params[:job_type] || 'example'
     message = params[:message] || 'Hello from web server!'
@@ -21,8 +20,6 @@ class JobsController < ApplicationController
     else
       render json: { error: 'Invalid job type' }, status: :bad_request
     end
-  rescue StandardError => e
-    render json: { error: e.message }, status: :internal_server_error
   end
 
   def status

@@ -2554,3 +2554,173 @@ Completed 200 OK in 29ms (Views: 0.3ms | ActiveRecord: 0.0ms (0 queries, 0 cache
 [ActiveJob] [ExampleJob] [361faea9-73b1-451b-b6f3-c67b72fdf8e9] Job performed at: 2025-06-20 05:52:48 UTC
 [ActiveJob] [ExampleJob] [361faea9-73b1-451b-b6f3-c67b72fdf8e9] Trace ID: TraceId(trace_id = 991466ae24e276d0, parent_id = 991466ae24e276d0, span_id = 9e9f636d7c5e8e65, sampled = 1, flags = 0, shared = false)
 [ActiveJob] [ExampleJob] [361faea9-73b1-451b-b6f3-c67b72fdf8e9] Performed ExampleJob (Job ID: 361faea9-73b1-451b-b6f3-c67b72fdf8e9) from Async(default) in 0.83ms
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Store'*/[0m
+Started POST "/jobs" for ::1 at 2025-06-20 07:48:47 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Store'*/[0m
+Processing by JobsController#create as */*
+  Parameters: {"message" => "Test job from web server!", "job" => {"message" => "Test job from web server!"}}
+[ActiveJob] Enqueued ExampleJob (Job ID: 063d662f-1066-47f3-ad2d-1dff3df99937) to Async(default) with arguments: "Test job from web server!", 0
+[ActiveJob] ↳ app/controllers/jobs_controller.rb:9:in 'JobsController#create'
+Completed 200 OK in 8ms (Views: 0.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+{"Tracing information":[{"name":"post []","traceId":"60b6aaffec90da93","id":"60b6aaffec90da93","localEndpoint":{"ipv4":"127.0.1.1","serviceName":"rails-store"},"timestamp":1750430927252084,"duration":59497,"debug":false,"kind":"SERVER","tags":{"http.status_code":"200","http.path":"/jobs","http.method":"POST"}}]}
+[ActiveJob] [ExampleJob] [063d662f-1066-47f3-ad2d-1dff3df99937] Performing ExampleJob (Job ID: 063d662f-1066-47f3-ad2d-1dff3df99937) from Async(default) enqueued at 2025-06-20T14:48:47.309756852Z with arguments: "Test job from web server!", 0
+[ActiveJob] [ExampleJob] [063d662f-1066-47f3-ad2d-1dff3df99937] Processing ExampleJob with message: Test job from web server!
+[ActiveJob] [ExampleJob] [063d662f-1066-47f3-ad2d-1dff3df99937] Job performed at: 2025-06-20 14:48:47 UTC
+[ActiveJob] [ExampleJob] [063d662f-1066-47f3-ad2d-1dff3df99937] Trace ID: TraceId(trace_id = 60b6aaffec90da93, parent_id = 60b6aaffec90da93, span_id = 7f417331450dc33b, sampled = 1, flags = 0, shared = false)
+[ActiveJob] [ExampleJob] [063d662f-1066-47f3-ad2d-1dff3df99937] Performed ExampleJob (Job ID: 063d662f-1066-47f3-ad2d-1dff3df99937) from Async(default) in 1.06ms
+Started POST "/api/v1/jobs" for ::1 at 2025-06-20 07:48:55 -0700
+Processing by Api::V1::JobsController#create as JSON
+  Parameters: {"message" => "Test job from API v1!", "job" => {"message" => "Test job from API v1!"}}
+[ActiveJob] Enqueued ExampleJob (Job ID: 700c7435-1a3a-4ddc-b117-653c2f953943) to Async(default) with arguments: "Test job from API v1!", 0
+[ActiveJob] ↳ app/controllers/api/v1/jobs_controller.rb:11:in 'Api::V1::JobsController#create'
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+{"Tracing information":[{"name":"post /api/v1/jobs(.:format)","traceId":"1ca6390349a109be","id":"1ca6390349a109be","localEndpoint":{"ipv4":"127.0.1.1","serviceName":"rails-store"},"timestamp":1750430935616106,"duration":4512,"debug":false,"kind":"SERVER","tags":{"http.status_code":"200","http.path":"/api/v1/jobs","http.method":"POST"}}]}
+[ActiveJob] [ExampleJob] [700c7435-1a3a-4ddc-b117-653c2f953943] Performing ExampleJob (Job ID: 700c7435-1a3a-4ddc-b117-653c2f953943) from Async(default) enqueued at 2025-06-20T14:48:55.619512503Z with arguments: "Test job from API v1!", 0
+[ActiveJob] [ExampleJob] [700c7435-1a3a-4ddc-b117-653c2f953943] Processing ExampleJob with message: Test job from API v1!
+[ActiveJob] [ExampleJob] [700c7435-1a3a-4ddc-b117-653c2f953943] Job performed at: 2025-06-20 14:48:55 UTC
+[ActiveJob] [ExampleJob] [700c7435-1a3a-4ddc-b117-653c2f953943] Trace ID: TraceId(trace_id = 1ca6390349a109be, parent_id = 1ca6390349a109be, span_id = b6bad2f3aa44879e, sampled = 1, flags = 0, shared = false)
+[ActiveJob] [ExampleJob] [700c7435-1a3a-4ddc-b117-653c2f953943] Performed ExampleJob (Job ID: 700c7435-1a3a-4ddc-b117-653c2f953943) from Async(default) in 0.57ms
+Started GET "/health" for ::1 at 2025-06-20 07:49:02 -0700
+Processing by HealthController#show as */*
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT 1 /*action='show',application='Store',controller='health'*/[0m
+  ↳ app/controllers/health_controller.rb:25:in 'HealthController#database_healthy?'
+  [1m[36mSolidQueue::Job Count (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "solid_queue_jobs" /*action='show',application='Store',controller='health'*/[0m
+  ↳ app/controllers/health_controller.rb:33:in 'HealthController#queue_healthy?'
+Completed 200 OK in 19ms (Views: 0.2ms | ActiveRecord: 1.8ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+{"Tracing information":[{"name":"get /health(.:format)","traceId":"97b2c9046cf418df","id":"97b2c9046cf418df","localEndpoint":{"ipv4":"127.0.1.1","serviceName":"rails-store"},"timestamp":1750430942330257,"duration":20956,"debug":false,"kind":"SERVER","tags":{"http.status_code":"200","http.path":"/health","http.method":"GET"}}]}
+Started GET "/jobs" for ::1 at 2025-06-20 07:49:08 -0700
+Processing by JobsController#index as */*
+Internal Error: Could not find table 'solid_queue_jobs'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/activerecord-8.0.2/lib/active_record/connection_adapters/sqlite3_adapter.rb:517:in 'ActiveRecord::ConnectionAdapters::SQLite3Adapter#table_structure'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/activerecord-8.0.2/lib/active_record/connection_adapters/abstract/schema_statements.rb:109:in 'ActiveRecord::ConnectionAdapters::SchemaStatements#columns'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/activerecord-8.0.2/lib/active_record/connection_adapters/schema_cache.rb:345:in 'block (2 levels) in ActiveRecord::ConnectionAdapters::SchemaCache#columns'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/activerecord-8.0.2/lib/active_record/connection_adapters/abstract/connection_pool.rb:418:in 'ActiveRecord::ConnectionAdapters::ConnectionPool#with_connection'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/activerecord-8.0.2/lib/active_record/connection_adapters/schema_cache.rb:344:in 'block in ActiveRecord::ConnectionAdapters::SchemaCache#columns'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/activerecord-8.0.2/lib/active_record/connection_adapters/schema_cache.rb:343:in 'Hash#fetch'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/activerecord-8.0.2/lib/active_record/connection_adapters/schema_cache.rb:343:in 'ActiveRecord::ConnectionAdapters::SchemaCache#columns'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/activerecord-8.0.2/lib/active_record/connection_adapters/schema_cache.rb:354:in 'block in ActiveRecord::ConnectionAdapters::SchemaCache#columns_hash'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/activerecord-8.0.2/lib/active_record/connection_adapters/schema_cache.rb:353:in 'Hash#fetch'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/activerecord-8.0.2/lib/active_record/connection_adapters/schema_cache.rb:353:in 'ActiveRecord::ConnectionAdapters::SchemaCache#columns_hash'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/activerecord-8.0.2/lib/active_record/connection_adapters/schema_cache.rb:54:in 'ActiveRecord::ConnectionAdapters::SchemaReflection#columns_hash'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/activerecord-8.0.2/lib/active_record/connection_adapters/schema_cache.rb:198:in 'ActiveRecord::ConnectionAdapters::BoundSchemaReflection#columns_hash'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/activerecord-8.0.2/lib/active_record/model_schema.rb:592:in 'ActiveRecord::ModelSchema::ClassMethods#load_schema!'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/activerecord-8.0.2/lib/active_record/counter_cache.rb:187:in 'ActiveRecord::CounterCache::ClassMethods#load_schema!'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/activerecord-8.0.2/lib/active_record/encryption/encryptable_record.rb:127:in 'ActiveRecord::Encryption::EncryptableRecord::ClassMethods#load_schema!'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/activerecord-8.0.2/lib/active_record/model_schema.rb:539:in 'block in ActiveRecord::ModelSchema::ClassMethods#load_schema'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/activerecord-8.0.2/lib/active_record/model_schema.rb:536:in 'Monitor#synchronize'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/activerecord-8.0.2/lib/active_record/model_schema.rb:536:in 'ActiveRecord::ModelSchema::ClassMethods#load_schema'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/activerecord-8.0.2/lib/active_record/model_schema.rb:428:in 'ActiveRecord::ModelSchema::ClassMethods#columns_hash'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/activerecord-8.0.2/lib/active_record/relation/query_methods.rb:1996:in 'ActiveRecord::QueryMethods#arel_column'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/activerecord-8.0.2/lib/active_record/relation/query_methods.rb:2154:in 'ActiveRecord::QueryMethods#order_column'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/activerecord-8.0.2/lib/active_record/relation/query_methods.rb:2108:in 'block (2 levels) in ActiveRecord::QueryMethods#preprocess_order_args'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/activerecord-8.0.2/lib/active_record/relation/query_methods.rb:2098:in 'Hash#each'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/activerecord-8.0.2/lib/active_record/relation/query_methods.rb:2098:in 'Enumerable#map'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/activerecord-8.0.2/lib/active_record/relation/query_methods.rb:2098:in 'block in ActiveRecord::QueryMethods#preprocess_order_args'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/activerecord-8.0.2/lib/active_record/relation/query_methods.rb:2093:in 'Array#map!'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/activerecord-8.0.2/lib/active_record/relation/query_methods.rb:2093:in 'ActiveRecord::QueryMethods#preprocess_order_args'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/activerecord-8.0.2/lib/active_record/relation/query_methods.rb:665:in 'ActiveRecord::QueryMethods#order!'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/activerecord-8.0.2/lib/active_record/relation/query_methods.rb:660:in 'ActiveRecord::QueryMethods#order'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/activerecord-8.0.2/lib/active_record/querying.rb:24:in 'ActiveRecord::Querying#order'
+/home/linux/Work/rr/app/controllers/jobs_controller.rb:50:in 'JobsController#index'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/actionpack-8.0.2/lib/action_controller/metal/basic_implicit_render.rb:8:in 'ActionController::BasicImplicitRender#send_action'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/actionpack-8.0.2/lib/abstract_controller/base.rb:226:in 'AbstractController::Base#process_action'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/actionpack-8.0.2/lib/action_controller/metal/rendering.rb:193:in 'ActionController::Rendering#process_action'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/actionpack-8.0.2/lib/abstract_controller/callbacks.rb:261:in 'block in AbstractController::Callbacks#process_action'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/activesupport-8.0.2/lib/active_support/callbacks.rb:120:in 'block in ActiveSupport::Callbacks#run_callbacks'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/i18n-1.14.7/lib/i18n.rb:353:in 'I18n::Base#with_locale'
+/home/linux/Work/rr/app/controllers/application_controller.rb:19:in 'ApplicationController#switch_locale'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/activesupport-8.0.2/lib/active_support/callbacks.rb:129:in 'block in ActiveSupport::Callbacks#run_callbacks'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/turbo-rails-2.0.13/lib/turbo-rails.rb:24:in 'Turbo.with_request_id'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/turbo-rails-2.0.13/app/controllers/concerns/turbo/request_id_tracking.rb:10:in 'Turbo::RequestIdTracking#turbo_tracking_request_id'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/activesupport-8.0.2/lib/active_support/callbacks.rb:129:in 'block in ActiveSupport::Callbacks#run_callbacks'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/activesupport-8.0.2/lib/active_support/callbacks.rb:140:in 'ActiveSupport::Callbacks#run_callbacks'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/actionpack-8.0.2/lib/abstract_controller/callbacks.rb:260:in 'AbstractController::Callbacks#process_action'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/actionpack-8.0.2/lib/action_controller/metal/rescue.rb:27:in 'ActionController::Rescue#process_action'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/actionpack-8.0.2/lib/action_controller/metal/instrumentation.rb:76:in 'block in ActionController::Instrumentation#process_action'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/activesupport-8.0.2/lib/active_support/notifications.rb:210:in 'block in ActiveSupport::Notifications.instrument'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/activesupport-8.0.2/lib/active_support/notifications/instrumenter.rb:58:in 'ActiveSupport::Notifications::Instrumenter#instrument'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/activesupport-8.0.2/lib/active_support/notifications.rb:210:in 'ActiveSupport::Notifications.instrument'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/actionpack-8.0.2/lib/action_controller/metal/instrumentation.rb:75:in 'ActionController::Instrumentation#process_action'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/actionpack-8.0.2/lib/action_controller/metal/params_wrapper.rb:259:in 'ActionController::ParamsWrapper#process_action'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/activerecord-8.0.2/lib/active_record/railties/controller_runtime.rb:39:in 'ActiveRecord::Railties::ControllerRuntime#process_action'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/actionpack-8.0.2/lib/abstract_controller/base.rb:163:in 'AbstractController::Base#process'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/actionview-8.0.2/lib/action_view/rendering.rb:40:in 'ActionView::Rendering#process'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/actionpack-8.0.2/lib/action_controller/metal.rb:252:in 'ActionController::Metal#dispatch'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/actionpack-8.0.2/lib/action_controller/metal.rb:335:in 'ActionController::Metal.dispatch'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/actionpack-8.0.2/lib/action_dispatch/routing/route_set.rb:67:in 'ActionDispatch::Routing::RouteSet::Dispatcher#dispatch'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/actionpack-8.0.2/lib/action_dispatch/routing/route_set.rb:50:in 'ActionDispatch::Routing::RouteSet::Dispatcher#serve'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/actionpack-8.0.2/lib/action_dispatch/journey/router.rb:53:in 'block in ActionDispatch::Journey::Router#serve'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/actionpack-8.0.2/lib/action_dispatch/journey/router.rb:133:in 'block in ActionDispatch::Journey::Router#find_routes'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/actionpack-8.0.2/lib/action_dispatch/journey/router.rb:126:in 'Array#each'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/actionpack-8.0.2/lib/action_dispatch/journey/router.rb:126:in 'ActionDispatch::Journey::Router#find_routes'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/actionpack-8.0.2/lib/action_dispatch/journey/router.rb:34:in 'ActionDispatch::Journey::Router#serve'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/actionpack-8.0.2/lib/action_dispatch/routing/route_set.rb:908:in 'ActionDispatch::Routing::RouteSet#call'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/railties-8.0.2/lib/rails/engine/lazy_route_set.rb:68:in 'Rails::Engine::LazyRouteSet#call'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/zipkin-tracer-0.48.0/lib/zipkin-tracer/rack/zipkin-tracer.rb:29:in 'block (3 levels) in ZipkinTracer::RackHandler#call'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/zipkin-tracer-0.48.0/lib/zipkin-tracer/rack/zipkin-tracer.rb:51:in 'ZipkinTracer::RackHandler#trace!'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/zipkin-tracer-0.48.0/lib/zipkin-tracer/rack/zipkin-tracer.rb:29:in 'block (2 levels) in ZipkinTracer::RackHandler#call'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/zipkin-tracer-0.48.0/lib/zipkin-tracer/zipkin_sender_base.rb:17:in 'Trace::ZipkinSenderBase#with_new_span'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/zipkin-tracer-0.48.0/lib/zipkin-tracer/rack/zipkin-tracer.rb:27:in 'block in ZipkinTracer::RackHandler#call'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/zipkin-tracer-0.48.0/lib/zipkin-tracer/trace_container.rb:8:in 'ZipkinTracer::TraceContainer.with_trace_id'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/zipkin-tracer-0.48.0/lib/zipkin-tracer/rack/zipkin-tracer.rb:23:in 'ZipkinTracer::RackHandler#call'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/rack-3.1.14/lib/rack/tempfile_reaper.rb:20:in 'Rack::TempfileReaper#call'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/rack-3.1.14/lib/rack/etag.rb:29:in 'Rack::ETag#call'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/rack-3.1.14/lib/rack/conditional_get.rb:31:in 'Rack::ConditionalGet#call'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/rack-3.1.14/lib/rack/head.rb:15:in 'Rack::Head#call'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/actionpack-8.0.2/lib/action_dispatch/http/permissions_policy.rb:38:in 'ActionDispatch::PermissionsPolicy::Middleware#call'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/actionpack-8.0.2/lib/action_dispatch/http/content_security_policy.rb:38:in 'ActionDispatch::ContentSecurityPolicy::Middleware#call'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/rack-session-2.1.1/lib/rack/session/abstract/id.rb:274:in 'Rack::Session::Abstract::Persisted#context'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/rack-session-2.1.1/lib/rack/session/abstract/id.rb:268:in 'Rack::Session::Abstract::Persisted#call'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/actionpack-8.0.2/lib/action_dispatch/middleware/cookies.rb:706:in 'ActionDispatch::Cookies#call'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/activerecord-8.0.2/lib/active_record/migration.rb:671:in 'ActiveRecord::Migration::CheckPending#call'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/actionpack-8.0.2/lib/action_dispatch/middleware/callbacks.rb:31:in 'block in ActionDispatch::Callbacks#call'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/activesupport-8.0.2/lib/active_support/callbacks.rb:100:in 'ActiveSupport::Callbacks#run_callbacks'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/actionpack-8.0.2/lib/action_dispatch/middleware/callbacks.rb:30:in 'ActionDispatch::Callbacks#call'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/actionpack-8.0.2/lib/action_dispatch/middleware/executor.rb:16:in 'ActionDispatch::Executor#call'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/actionpack-8.0.2/lib/action_dispatch/middleware/actionable_exceptions.rb:18:in 'ActionDispatch::ActionableExceptions#call'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/actionpack-8.0.2/lib/action_dispatch/middleware/debug_exceptions.rb:31:in 'ActionDispatch::DebugExceptions#call'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/web-console-4.2.1/lib/web_console/middleware.rb:132:in 'WebConsole::Middleware#call_app'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/web-console-4.2.1/lib/web_console/middleware.rb:28:in 'block in WebConsole::Middleware#call'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/web-console-4.2.1/lib/web_console/middleware.rb:17:in 'Kernel#catch'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/web-console-4.2.1/lib/web_console/middleware.rb:17:in 'WebConsole::Middleware#call'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/actionpack-8.0.2/lib/action_dispatch/middleware/show_exceptions.rb:32:in 'ActionDispatch::ShowExceptions#call'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/railties-8.0.2/lib/rails/rack/logger.rb:41:in 'Rails::Rack::Logger#call_app'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/railties-8.0.2/lib/rails/rack/logger.rb:29:in 'Rails::Rack::Logger#call'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/actionpack-8.0.2/lib/action_dispatch/middleware/remote_ip.rb:96:in 'ActionDispatch::RemoteIp#call'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/actionpack-8.0.2/lib/action_dispatch/middleware/request_id.rb:34:in 'ActionDispatch::RequestId#call'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/rack-3.1.14/lib/rack/method_override.rb:28:in 'Rack::MethodOverride#call'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/rack-3.1.14/lib/rack/runtime.rb:24:in 'Rack::Runtime#call'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/actionpack-8.0.2/lib/action_dispatch/middleware/server_timing.rb:61:in 'block in ActionDispatch::ServerTiming#call'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/actionpack-8.0.2/lib/action_dispatch/middleware/server_timing.rb:26:in 'ActionDispatch::ServerTiming::Subscriber#collect_events'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/actionpack-8.0.2/lib/action_dispatch/middleware/server_timing.rb:60:in 'ActionDispatch::ServerTiming#call'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/actionpack-8.0.2/lib/action_dispatch/middleware/executor.rb:16:in 'ActionDispatch::Executor#call'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/actionpack-8.0.2/lib/action_dispatch/middleware/static.rb:27:in 'ActionDispatch::Static#call'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/rack-3.1.14/lib/rack/sendfile.rb:114:in 'Rack::Sendfile#call'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/actionpack-8.0.2/lib/action_dispatch/middleware/host_authorization.rb:143:in 'ActionDispatch::HostAuthorization#call'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/railties-8.0.2/lib/rails/engine.rb:535:in 'Rails::Engine#call'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/puma-6.6.0/lib/puma/configuration.rb:279:in 'Puma::Configuration::ConfigMiddleware#call'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/puma-6.6.0/lib/puma/request.rb:99:in 'block in Puma::Request#handle_request'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/puma-6.6.0/lib/puma/thread_pool.rb:390:in 'Puma::ThreadPool#with_force_shutdown'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/puma-6.6.0/lib/puma/request.rb:98:in 'Puma::Request#handle_request'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/puma-6.6.0/lib/puma/server.rb:472:in 'Puma::Server#process_client'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/puma-6.6.0/lib/puma/server.rb:254:in 'block in Puma::Server#run'
+/home/linux/.rbenv/versions/3.4.3/lib/ruby/gems/3.4.0/gems/puma-6.6.0/lib/puma/thread_pool.rb:167:in 'block in Puma::ThreadPool#spawn_thread'
+Completed 500 Internal Server Error in 2ms (Views: 0.1ms | ActiveRecord: 0.1ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+{"Tracing information":[{"name":"get /jobs(.:format)","traceId":"17969247a328c695","id":"17969247a328c695","localEndpoint":{"ipv4":"127.0.1.1","serviceName":"rails-store"},"timestamp":1750430948334095,"duration":2351,"debug":false,"kind":"SERVER","tags":{"http.status_code":"500","error":"500","http.path":"/jobs","http.method":"GET"}}]}
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Store'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Store'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Store'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Store'*/[0m
+Started GET "/jobs" for ::1 at 2025-06-20 07:51:33 -0700
+{"Tracing information":[{"name":"get []","traceId":"80ba0da9dd6bd42a","id":"80ba0da9dd6bd42a","localEndpoint":{"ipv4":"127.0.1.1","serviceName":"rails-store"},"timestamp":1750431093182147,"duration":40,"debug":false,"kind":"SERVER","tags":{"http.status_code":"404","error":"404","http.path":"/jobs","http.method":"GET"}}]}
+  
+ActionController::RoutingError (No route matches [GET] "/jobs"):
+  
