@@ -3,8 +3,16 @@
 Rails.application.routes.draw do
   root to: 'products#index'
 
-  resource :session
-  resources :passwords, param: :token
+  # Health check endpoint for Docker health checks
+  get 'health', to: 'health#show'
+
+  # Job management endpoints
+  resources :jobs, only: %i[create index] do
+    member do
+      get :status
+    end
+  end
+
   resources :products do
     resources :subscribers, only: [:create]
   end

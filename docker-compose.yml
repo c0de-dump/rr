@@ -1,0 +1,92 @@
+services:
+  # Database service
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: store_production
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      # Create additional databases for Rails multi-database setup
+      POSTGRES_MULTIPLE_DATABASES: store_production_cache,store_production_queue,store_production_cable
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./scripts/create-multiple-postgresql-databases.sh:/docker-entrypoint-initdb.d/create-multiple-postgresql-databases.sh:ro
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Zipkin for distributed tracing
+  zipkin:
+    image: openzipkin/zipkin:latest
+    ports:
+      - "9411:9411"
+    environment:
+      - STORAGE_TYPE=mem
+
+  # Web Server Service
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - RAILS_ENV=production
+      - DATABASE_URL=postgresql://postgres:password@db:5432/store_production
+      - DATABASE_HOST=db
+      - DATABASE_NAME=store_production
+      - DATABASE_USER=postgres
+      - DATABASE_PASSWORD=password
+      - RAILS_MASTER_KEY=${RAILS_MASTER_KEY}
+      - JOB_CONCURRENCY=0  # Disable job processing in web server
+    depends_on:
+      db:
+        condition: service_healthy
+      zipkin:
+        condition: service_started
+    volumes:
+      - storage_data:/rails/storage
+    command: ["./bin/rails", "server", "-b", "0.0.0.0", "-p", "3000"]
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    restart: unless-stopped
+
+  # Worker Service for processing background jobs
+  worker:
+    build: .
+    environment:
+      - RAILS_ENV=production
+      - DATABASE_URL=postgresql://postgres:password@db:5432/store_production
+      - DATABASE_HOST=db
+      - DATABASE_NAME=store_production
+      - DATABASE_USER=postgres
+      - DATABASE_PASSWORD=password
+      - RAILS_MASTER_KEY=${RAILS_MASTER_KEY}
+      - JOB_CONCURRENCY=3  # Number of worker processes
+    depends_on:
+      db:
+        condition: service_healthy
+      zipkin:
+        condition: service_started
+    volumes:
+      - storage_data:/rails/storage
+    command: ["./bin/rails", "solid_queue:start"]
+    healthcheck:
+      test: ["CMD", "pgrep", "-f", "solid_queue"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    restart: unless-stopped
+    # deploy:
+    #   replicas: 2  # Run 2 worker instances for redundancy
+
+volumes:
+  postgres_data:
+  storage_data:
