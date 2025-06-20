@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  root to: 'products#index'
+  root to: 'jobs#index'
 
   # Health check endpoint for Docker health checks
   get 'health', to: 'health#show'
@@ -12,9 +12,4 @@ Rails.application.routes.draw do
       get :status
     end
   end
-
-  resources :products do
-    resources :subscribers, only: [:create]
-  end
-  resource :unsubscribe, only: [:show]
 end
