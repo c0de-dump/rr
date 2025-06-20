@@ -1,4 +1,7 @@
 class JobsController < ApplicationController
+  # Skip CSRF verification for API endpoints
+  skip_before_action :verify_authenticity_token
+
   def create
     job_type = params[:job_type] || 'example'
     message = params[:message] || 'Hello from web server!'

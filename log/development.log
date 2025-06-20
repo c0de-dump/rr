@@ -2539,3 +2539,18 @@ Migrating to DropSubscribersTable (20250620053644)
   [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Store'*/[0m
   [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Store'*/[0m
   [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Store'*/[0m
+Started POST "/jobs" for ::1 at 2025-06-19 22:52:48 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Store'*/[0m
+Processing by JobsController#create as */*
+  Parameters: {"message" => "Test job from web server!", "job" => {"message" => "Test job from web server!"}}
+[ActiveJob] Enqueued ExampleJob (Job ID: 361faea9-73b1-451b-b6f3-c67b72fdf8e9) to Async(default) with arguments: "Test job from web server!", 0
+[ActiveJob] ↳ app/controllers/jobs_controller.rb:12:in 'JobsController#create'
+Completed 200 OK in 29ms (Views: 0.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+{"Tracing information":[{"name":"post []","traceId":"991466ae24e276d0","id":"991466ae24e276d0","localEndpoint":{"ipv4":"127.0.1.1","serviceName":"rails-store"},"timestamp":1750398768806386,"duration":71956,"debug":false,"kind":"SERVER","tags":{"http.status_code":"200","http.path":"/jobs","http.method":"POST"}}]}
+[ActiveJob] [ExampleJob] [361faea9-73b1-451b-b6f3-c67b72fdf8e9] Performing ExampleJob (Job ID: 361faea9-73b1-451b-b6f3-c67b72fdf8e9) from Async(default) enqueued at 2025-06-20T05:52:48.876135980Z with arguments: "Test job from web server!", 0
+[ActiveJob] [ExampleJob] [361faea9-73b1-451b-b6f3-c67b72fdf8e9] Processing ExampleJob with message: Test job from web server!
+[ActiveJob] [ExampleJob] [361faea9-73b1-451b-b6f3-c67b72fdf8e9] Job performed at: 2025-06-20 05:52:48 UTC
+[ActiveJob] [ExampleJob] [361faea9-73b1-451b-b6f3-c67b72fdf8e9] Trace ID: TraceId(trace_id = 991466ae24e276d0, parent_id = 991466ae24e276d0, span_id = 9e9f636d7c5e8e65, sampled = 1, flags = 0, shared = false)
+[ActiveJob] [ExampleJob] [361faea9-73b1-451b-b6f3-c67b72fdf8e9] Performed ExampleJob (Job ID: 361faea9-73b1-451b-b6f3-c67b72fdf8e9) from Async(default) in 0.83ms
