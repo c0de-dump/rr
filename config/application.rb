@@ -29,11 +29,11 @@ module Store
     zipkin_config = {
       service_name: 'rails-store',      # Required - the name of this application
       service_port: 3000,               # Default port the service runs on
-      # json_api_host: 'http://zipkin:9411', # Zipkin collector host
+      json_api_host: 'http://zipkin:9411', # Zipkin collector host
       sample_rate: 1.0, # Sample rate, 1.0 means sample all requests
-      logger: Rails.logger,
-      sampled_as_boolean: false,
-      log_tracing: true
+      # logger: Rails.logger,
+      sampled_as_boolean: false
+      # log_tracing: true
     }
     config.middleware.use ZipkinTracer::RackHandler, zipkin_config
   end
