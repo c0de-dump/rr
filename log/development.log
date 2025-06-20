@@ -2459,3 +2459,45 @@ Content-Transfer-Encoding: 7bit
 ----==_mimepart_682b4dec6e3c_fbf89bf0-42d--
 
 [ActiveJob] [ActionMailer::MailDeliveryJob] [e51e3480-bdaf-43a4-a041-ee7f05517076] Performed ActionMailer::MailDeliveryJob (Job ID: e51e3480-bdaf-43a4-a041-ee7f05517076) from Async(default) in 57.05ms
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Store'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Store'*/[0m
+Started GET "/" for 127.0.0.1 at 2025-06-15 23:10:04 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Store'*/[0m
+Processing by ProductsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products" /*action='index',application='Store',controller='products'*/[0m
+  ↳ app/views/products/index.html.erb:6
+  Rendered products/index.html.erb within layouts/application (Duration: 7.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 16.7ms | GC: 0.0ms)
+Completed 200 OK in 67ms (Views: 19.0ms | ActiveRecord: 1.2ms (1 query, 0 cached) | GC: 0.3ms)
+
+
+{"Tracing information":[{"name":"get []","traceId":"e79831d7b7b07837","id":"e79831d7b7b07837","localEndpoint":{"ipv4":"127.0.1.1","serviceName":"rails-store"},"timestamp":1750054204439770,"duration":104744,"debug":false,"kind":"SERVER","tags":{"http.status_code":"200","http.path":"/","http.method":"GET"}}]}
+Started GET "/assets/actiontext-e646701d.css" for 127.0.0.1 at 2025-06-15 23:10:04 -0700
+Started GET "/assets/application-8b441ae0.css" for 127.0.0.1 at 2025-06-15 23:10:04 -0700
+Started GET "/assets/stimulus.min-4b1e420e.js" for 127.0.0.1 at 2025-06-15 23:10:04 -0700
+{"Tracing information":[{"name":"get /assets","traceId":"70bca9d3af84c0e2","id":"70bca9d3af84c0e2","localEndpoint":{"ipv4":"127.0.1.1","serviceName":"rails-store"},"timestamp":1750054204577512,"duration":383,"debug":false,"kind":"SERVER","tags":{"http.status_code":"200","http.path":"/actiontext-e646701d.css","http.method":"GET"}}]}
+Started GET "/assets/trix-4b540cb5.js" for 127.0.0.1 at 2025-06-15 23:10:04 -0700
+{"Tracing information":[{"name":"get /assets","traceId":"cbfb8ed94e15613f","id":"cbfb8ed94e15613f","localEndpoint":{"ipv4":"127.0.1.1","serviceName":"rails-store"},"timestamp":1750054204588885,"duration":208,"debug":false,"kind":"SERVER","tags":{"http.status_code":"200","http.path":"/application-8b441ae0.css","http.method":"GET"}}]}
+{"Tracing information":[{"name":"get /assets","traceId":"8f65728c0a85a862","id":"8f65728c0a85a862","localEndpoint":{"ipv4":"127.0.1.1","serviceName":"rails-store"},"timestamp":1750054204590098,"duration":898,"debug":false,"kind":"SERVER","tags":{"http.status_code":"200","http.path":"/stimulus.min-4b1e420e.js","http.method":"GET"}}]}
+Started GET "/assets/actiontext.esm-f1c04d34.js" for 127.0.0.1 at 2025-06-15 23:10:04 -0700
+Started GET "/assets/controllers/application-3affb389.js" for 127.0.0.1 at 2025-06-15 23:10:04 -0700
+{"Tracing information":[{"name":"get /assets","traceId":"5a4df6d03cae8409","id":"5a4df6d03cae8409","localEndpoint":{"ipv4":"127.0.1.1","serviceName":"rails-store"},"timestamp":1750054204601693,"duration":807,"debug":false,"kind":"SERVER","tags":{"http.status_code":"200","http.path":"/trix-4b540cb5.js","http.method":"GET"}}]}
+Started GET "/assets/controllers/hello_controller-708796bd.js" for 127.0.0.1 at 2025-06-15 23:10:04 -0700
+{"Tracing information":[{"name":"get /assets","traceId":"59999aa2cb69793d","id":"59999aa2cb69793d","localEndpoint":{"ipv4":"127.0.1.1","serviceName":"rails-store"},"timestamp":1750054204607993,"duration":238,"debug":false,"kind":"SERVER","tags":{"http.status_code":"200","http.path":"/actiontext.esm-f1c04d34.js","http.method":"GET"}}]}
+{"Tracing information":[{"name":"get /assets","traceId":"6b8aa332d448ce2a","id":"6b8aa332d448ce2a","localEndpoint":{"ipv4":"127.0.1.1","serviceName":"rails-store"},"timestamp":1750054204609396,"duration":201,"debug":false,"kind":"SERVER","tags":{"http.status_code":"200","http.path":"/controllers/application-3affb389.js","http.method":"GET"}}]}
+Started GET "/assets/controllers/index-ee64e1f1.js" for 127.0.0.1 at 2025-06-15 23:10:04 -0700
+{"Tracing information":[{"name":"get /assets","traceId":"1fbe15e9b590a659","id":"1fbe15e9b590a659","localEndpoint":{"ipv4":"127.0.1.1","serviceName":"rails-store"},"timestamp":1750054204615721,"duration":124,"debug":false,"kind":"SERVER","tags":{"http.status_code":"200","http.path":"/controllers/hello_controller-708796bd.js","http.method":"GET"}}]}
+{"Tracing information":[{"name":"get /assets","traceId":"c9a29d4ce24f01fd","id":"c9a29d4ce24f01fd","localEndpoint":{"ipv4":"127.0.1.1","serviceName":"rails-store"},"timestamp":1750054204618422,"duration":180,"debug":false,"kind":"SERVER","tags":{"http.status_code":"200","http.path":"/controllers/index-ee64e1f1.js","http.method":"GET"}}]}
+Started GET "/assets/turbo.min-1262d735.js" for 127.0.0.1 at 2025-06-15 23:10:04 -0700
+{"Tracing information":[{"name":"get /assets","traceId":"0f855c64464473b1","id":"0f855c64464473b1","localEndpoint":{"ipv4":"127.0.1.1","serviceName":"rails-store"},"timestamp":1750054204813963,"duration":1349,"debug":false,"kind":"SERVER","tags":{"http.status_code":"200","http.path":"/turbo.min-1262d735.js","http.method":"GET"}}]}
+Started GET "/assets/application-3da76259.js" for 127.0.0.1 at 2025-06-15 23:10:04 -0700
+Started GET "/assets/stimulus-loading-1fc53fe7.js" for 127.0.0.1 at 2025-06-15 23:10:04 -0700
+{"Tracing information":[{"name":"get /assets","traceId":"fff90c34433c8023","id":"fff90c34433c8023","localEndpoint":{"ipv4":"127.0.1.1","serviceName":"rails-store"},"timestamp":1750054204822458,"duration":171,"debug":false,"kind":"SERVER","tags":{"http.status_code":"200","http.path":"/application-3da76259.js","http.method":"GET"}}]}
+{"Tracing information":[{"name":"get /assets","traceId":"fa0f4a9243da9a03","id":"fa0f4a9243da9a03","localEndpoint":{"ipv4":"127.0.1.1","serviceName":"rails-store"},"timestamp":1750054204825179,"duration":136,"debug":false,"kind":"SERVER","tags":{"http.status_code":"200","http.path":"/stimulus-loading-1fc53fe7.js","http.method":"GET"}}]}
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Store'*/[0m
+[ActiveJob] [SubscriberJob] [44101c18-ec6b-42fd-9d18-51995ea67e82] Performing SubscriberJob (Job ID: 44101c18-ec6b-42fd-9d18-51995ea67e82) from Async(subscribe)
+[ActiveJob] [SubscriberJob] [44101c18-ec6b-42fd-9d18-51995ea67e82] ↳ (store):1:in '<main>'
+[ActiveJob] [SubscriberJob] [44101c18-ec6b-42fd-9d18-51995ea67e82] Performed SubscriberJob (Job ID: 44101c18-ec6b-42fd-9d18-51995ea67e82) from Async(subscribe) in 0.82ms
+[ActiveJob] [SubscriberJob] [44101c18-ec6b-42fd-9d18-51995ea67e82] ↳ (store):1:in '<main>'
